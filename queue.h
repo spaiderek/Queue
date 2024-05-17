@@ -1,1 +1,0 @@
-int push(int val);
