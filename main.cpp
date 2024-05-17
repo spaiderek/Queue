@@ -1,56 +1,82 @@
 #include <stdio.h>
-#define CAPACITY 5
-
-int queue[CAPACITY];
-int size = 0;
-
-int push(int val) {
-    if (size < CAPACITY) {
-        queue[size++] = val;
-        return 1;
-    }
-    return 0;
-}
-
-int pop() {
-    if (size != 0) {
-        int popped_value = queue[0];
-        for (int i = 0; i < size - 1; i++)
-            queue[i] = queue[i + 1];
-        size--;
-        return popped_value;
-    }
-    return -1;
-}
-
-
-void display_queue() {
+#include "gueue.h"
+void menu(void){
     printf("\n");
-    for (int i = 0; i < size; i++)
-        printf("%d ", queue[i]);
-    printf("\nsize: %d\n", size);
+    printf("1.Enter a number into queue (push)\n");
+    printf("2.Read a value of the first element (top)\n");
+    printf("3.Delete first number (pop)\n");
+    printf("4.Check if queue is empty\n");
+    printf("5.Check if queue is full\n");
+    printf("0.EXIT\n");
 }
-int main() {
-    push(1);
-    push(2);
-    push(3);
-    push(4);
-    push(5);
-    display_queue();
+int main()
+{
+    int temp = 0;
+    int option = 0;
+    do{
+        menu();
+        scanf("%d", &option);
 
-    //int x = pop();
-    //printf("popped value: %d\n", x);
-    //display_queue();
 
-   // x = pop();
-   // printf("popped value: %d\n", x);
-    //display_queue();
+        switch (option)
+        {
+            case 0:
+                break;
+            case 1:
+                if ( !isQueueFull() ){
+                    printf("Enter value: ");
+                    scanf("%d", &temp);
+                    Push(temp);
+                }
+                else {
+                    printf("Wrong operation. Queue is Full!!!\n\n");
+                }
 
-    //x = pop();
-    //printf("popped value: %d\n", x);
-    //display_queue();
+                break;
 
-    //x = pop();
-   // printf("popped value: %d\n", x);
-   // display_queue();
+            case 2:
+                if (!isQueueEmpty()) {
+                    temp = Top();
+                    printf("Read value: %d", temp);
+                }
+                else {
+                    printf("Wrong operation. Queue is Empty!!!\n\n");
+                }
+
+                break;
+
+            case 3:
+                if (!isQueueEmpty()) {
+                    temp = Pop();
+                    printf("New first element: %d", temp);
+                }
+                else {
+                    printf("Wrong operation. Queue is Empty!!!\n\n");
+                }
+                break;
+
+            case 4:
+                if (isQueueEmpty()) {
+                    printf("Queue is Empty.\n");
+                }
+                else {
+                    printf("Queue isn't Empty.\n");
+                }
+                break;
+
+            case 5:
+                if (isQueueFull()) {
+                    printf("Queue is Full.\n");
+                }
+                else {
+                    printf("Queue isn't Full.\n");
+                }
+                break;
+            default:
+                printf("Choose option.\n\n");
+                break;
+        }
+    }while(option=0);
+    printf("Good bye :)");
+    return (0);
 }

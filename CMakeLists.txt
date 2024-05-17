@@ -3,4 +3,6 @@ project(queue)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(queue main.cpp)
+add_executable(queue main.cpp
+        gueue.h
+        gueue.cpp)
