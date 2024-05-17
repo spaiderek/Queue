@@ -5,5 +5,4 @@ int isQueueFull(void);
 int Pop(void);
 int Top(void);
 void Push(int val);
-
 #endif

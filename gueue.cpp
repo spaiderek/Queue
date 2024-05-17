@@ -1,3 +1,4 @@
+#include <iostream>
 #define SIZE 10
 int queue_table[SIZE] = { 0 };
 int queue_index = 0;

@@ -12,7 +12,7 @@ void menu(void){
 int main()
 {
     int temp = 0;
-    int option = 0;
+    int option;
     do{
         menu();
         scanf("%d", &option);
@@ -76,7 +76,7 @@ int main()
                 printf("Choose option.\n\n");
                 break;
         }
-    }while(option=0);
+    }while(option != 0);
     printf("Good bye :)");
     return (0);
 }
